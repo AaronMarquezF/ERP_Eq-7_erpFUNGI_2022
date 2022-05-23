@@ -1,0 +1,43 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Registro de Micelio en Grano</h1>
+    <form action="/MicelioBolsa/agregar" method="post" enctype="multipart/form-data" style=background-color:#FBEEE6>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" name="idMicelioBolsa" readonly class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">Nombre del Titular:</label>
+            <input type="text" name="idEspecies" required maxlength="60" placeholder="Nombre del Propietario" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="mes">Mes de Vencimiento:</label>
+            <input type="text" name="presioPublico" min="0" required maxlength="60" placeholder="Mes de vencimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ani">Año de Vencimiento:</label>
+            <input type="number" name="costoProduccion" min="0" required maxlength="60" placeholder="Año de vencimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ani">Año de Vencimiento:</label>
+            <input type="number" name="fechaInoculacion" min="0" required maxlength="60" placeholder="Año de vencimiento" class="form-control">
+        </div>
+        <div class="form-control">
+            <label for="est">Estatus:</label>
+
+                <input type="checkbox" name="estatus" value="Inactiva" checked>
+
+
+        </div>
+            <button type="submit" class="btn btn-primary">Agregar Tarjeta</button>
+            <a href="/MicelioBolsa" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

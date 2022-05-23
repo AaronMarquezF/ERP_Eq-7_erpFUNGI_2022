@@ -1,0 +1,44 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Sellos de Esporas Registrados</h1>
+
+    <a href="/SelloEsporada/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar nuevo Sello de Esporas
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>ID Especie</th>
+        <th>Existencias</th>
+        <th>Estatus</th>
+        <th>Fecha de Impresión</th>
+        <th>Precio al publico</th>
+        <th>Costo de Producción</th>
+        <th>Imagen</th>
+        {% for se in SelloEsporada %}
+        <tr>
+            <td>{{se.idSelloEsporada}}</td>
+            <td>{{se.idEspecies}}</td>
+            <td>{{se.existencias}}</td>
+            <td>{{se.estatus}}</td>
+            <td>{{se.fechaImpresion}}</td>
+            <td>{{se.precioPublico}}</td>
+            <td>{{se.costoProduccion}}</td>
+            <td><img src="/SelloEsporada/consultarImagen/{{se.idSelloEsporada}}" width="100px" height="100px"></td>
+            <td>
+                <a href="/SelloEsporada/{{se.idSelloEsporada}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

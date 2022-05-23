@@ -1,0 +1,77 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">FUNGI-LIFE</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">MóDULOS
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/CuentaBancaria">Tarjetas</a></li>
+          <li><a href="/DetallesPedidos">Detalles de los pedidos</a></li>
+          <li><a href="/DetallesVenta">Detalles de la Ventas</a></li>
+          <li><a href="/Empleado">Empleados</a></li>
+          <li><a href="/Especies">Especies existentes</a></li>
+          <li><a href="/Historial">Historial del Empleado</a></li>
+          <li><a href="/HongosCFructifero">Hongos existentes</a></li>
+          <li><a href="/MicelioBolsa">Micelio en Grano</a></li>
+          <li><a href="/MicelioPlacaPetri">Micelio en Placa Petri</a></li>
+          <li><a href="/Pedidos">Pedidos</a></li>
+          <li><a href="/PlacasPetri">Placas petri con agar</a></li>
+          <li><a href="/Proveedores">Lista de Proveedores</a></li>
+          <li><a href="/SelloEsporada">Sellos de Esporas</a></li>
+          <li><a href="/Usuarios">Usuarios registrados</a></li>
+          <li><a href="/Venta">Ventas realizadas</a></li>
+          <li><a href="/VialEspora">Viales de Esporas Existentes</a></li>
+        </ul>
+      </li>
+      {% if current_user.is_authenticated %}
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">CARRITO
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/carrito">Consulta</a></li>
+        </ul>
+      </li>
+      {% endif %}
+      {% if current_user.is_authenticated %}
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">PEDIDOS
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">REGISTRO</a></li>
+          <li><a href="/Pedidos">SEGUIMIENTO</a></li>
+        </ul>
+      </li>
+      {% endif %}
+      {% if current_user.is_authenticated and current_user.is_admin() %}
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">USUARIOS
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/registrarCuenta">CLIENTES</a></li>
+          <li><a href="#">VENDEDORES</a></li>
+          <li><a href="/Usuarios/nuevo">Registro de Usuarios</a></li>
+        </ul>
+      </li>
+      {% endif %}
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+            {% if not current_user.is_authenticated %}
+            <li style="float:right"><a href="/Usuarios/iniciarSesion"><span class="glyphicon glyphicon-log-in"></span> Iniciar Sesion</a></li>
+            {% else %}
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <span class="glyphicon glyphicon-user"></span>{{current_user.nombreCompleto}}
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/Usuarios/verPerfil"><span class="glyphicon glyphicon-edit"></span> Editar mi perfil</a></li>
+                <li><a href="/Usuarios/cerrarSesion"><span class="glyphicon glyphicon-log-out"></span> Cerrar Sesion</a></li>
+              </ul>
+            </li>
+            {% endif %}
+      </ul>
+  </div>
+</nav>

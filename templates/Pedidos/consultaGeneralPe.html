@@ -1,0 +1,42 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Pedidos Registrados</h1>
+
+    <a href="/Pedidos/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Registrar Pedido
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>Id de Proveedor</th>
+        <th>Id de Empleado</th>
+        <th>Concepto</th>
+        <th>Cantidad</th>
+        <th>Total a Pagar</th>
+        <th>Estatus</th>
+        {% for pe in pedidos %}
+        <tr>
+            <td>{{pe.idPedidos}}</td>
+            <td>{{pe.idProveedores}}</td>
+            <td>{{pe.idEmpleado}}</td>
+            <td>{{pe.concepto}}</td>
+            <td>{{pe.cantidad}}</td>
+            <td>{{pe.tatalPagar}}</td>
+            <td>{{pe.estatus}}</td>
+            <td>
+                <a href="/Pedidos/{{pe.idPedidos}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

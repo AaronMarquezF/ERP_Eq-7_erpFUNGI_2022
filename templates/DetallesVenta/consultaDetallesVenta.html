@@ -1,0 +1,52 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Detalles de la Venta</h1>
+
+    <a href="/DetallesVenta/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Registrar Detalles de Venta
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>ID Venta</th>
+        <th>ID Sello de Esporas</th>
+        <th>ID Vial de Esporas</th>
+        <th>ID Micelio en Placa Petri</th>
+        <th>ID Micelio en Bolsa</th>
+        <th>ID Placa petri</th>
+        <th>ID Hongo(cuerpo fructífero)</th>
+        <th>Cantidad</th>
+        <th>Fecha de Transacción</th>
+        <th>Subtotal</th>
+        <th>Estatus</th>
+        {% for dv in detallesVenta %}
+        <tr>
+            <td>{{dv.idDetallesVenta}}</td>
+            <td>{{dv.idVenta}}</td>
+            <td>{{dv.idSelloEsporada}}</td>
+            <td>{{dv.idVialEspora}}</td>
+            <td>{{dv.idMicelioPlacaPetri}}</td>
+            <td>{{dv.idMicelioBolsa}}</td>
+            <td>{{dv.idPlacasPetri}}</td>
+            <td>{{dv.idHongosCFructifero}}</td>
+            <td>{{dv.cantidad}}</td>
+            <td>{{dv.fecha}}</td>
+            <td>{{dv.subtotal}}</td>
+            <td>{{dv.estatus}}</td>
+            <td>
+                <a href="/DetallesVenta/{{dv.idDetallesVenta}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Historial de Empleado</h1>
+
+    <a href="/Historial/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Registrar Historial
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>Id de Empleado</th>
+        <th>Fecha</th>
+        <th>Hora de Entrada</th>
+        <th>Hora de Salida</th>
+        {% for hi in historial %}
+        <tr>
+            <td>{{hi.idHistorial}}</td>
+            <td>{{hi.idEmpleado}}</td>
+            <td>{{hi.fecha}}</td>
+            <td>{{hi.horaEntrada}}</td>
+            <td>{{hi.horaSalida}}</td>
+            <td>
+                <a href="/Historial/{{hi.idHistorial}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

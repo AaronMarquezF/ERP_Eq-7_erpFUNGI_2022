@@ -1,0 +1,42 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Viales de Esporas Registrados</h1>
+
+    <a href="/VialEspora/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar nuevo Vial de Espora
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>ID Especie</th>
+        <th>Precio al publico</th>
+        <th>Costo de Producción</th>
+        <th>Estatus</th>
+        <th>Existencias</th>
+        <th>Imagen</th>
+        {% for ves in VialEspora %}
+        <tr>
+            <td>{{ves.idVialEspora}}</td>
+            <td>{{ves.idEspecies}}</td>
+            <td>{{ves.precioPublico}}</td>
+            <td>{{ves.costoProduccion}}</td>
+            <td>{{ves.estatus}}</td>
+            <td>{{ves.existencias}}</td>
+            <td><img src="/VialEspora/consultarImagen/{{ves.idVialEspora}}" width="100px" height="100px"></td>
+            <td>
+                <a href="/VialEspora/{{ves.idVialEspora}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

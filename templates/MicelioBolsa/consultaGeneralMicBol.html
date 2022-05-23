@@ -1,0 +1,42 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Micelio en bolsa Registrados</h1>
+
+    <a href="/MicelioBolsa/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar Bolsa de Micelio
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>ID Especie</th>
+        <th>Precio al publico</th>
+        <th>Costo de Producción</th>
+        <th>Fecha de Inoculación</th>
+        <th>Estatus</th>
+        <th>Imagen</th>
+        {% for mb in micelioBolsa %}
+        <tr>
+            <td>{{mb.idMicelioBolsa}}</td>
+            <td>{{mb.idEspecies}}</td>
+            <td>{{mb.presioPublico}}</td>
+            <td>{{mb.costoProduccion}}</td>
+            <td>{{mb.fechaInoculacion}}</td>
+            <td>{{mb.estatus}}</td>
+            <td><img src="/MicelioBolsa/consultarImagen/{{mb.idMicelioBolsa}}" width="100px" height="80px"></td>
+            <td>
+                <a href="/MicelioBolsa/{{mb.idMicelioBolsa}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

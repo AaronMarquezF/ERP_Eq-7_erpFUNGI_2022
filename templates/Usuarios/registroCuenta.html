@@ -1,0 +1,34 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+<!--<link rel="stylesheet" href="{{url_for('static',filename='css/estiloRegistrar.css')}}">-->
+  <section class="form-register">
+    <h4>Formulario Registro</h4>
+    <input class="controls" type="text" name="nombres" id="nombre" placeholder="Ingrese su Nombre Completo" required>
+      <input class="controls" type="text" name="nombres" id="apPaterno" placeholder="Ingrese su Apellido Paterno" required>
+      <input class="controls" type="text" name="nombres" id="apMaterno" placeholder="Ingrese su Apellido Materno" required>
+    <input class="controls" type="text" name="direccion" id="direccion" placeholder="Ingrese su Dirección" required>
+    <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingrese su Telefono" required>
+    <input class="controls" type="correo" name="correo" id="correo" placeholder="Ingrese su Correo" required>
+    <input class="controls" type="password" name="password" id="password" placeholder="Ingrese su Contraseña" required>
+     <input class="controls" type="password" name="password" id="password1" placeholder="Ingrese su Contraseña Nuevamente" required>
+      <input class="controls" type="password" name="imagen" id="imagen" placeholder="Ingrese una foto de Perfil" required>
+    <div class="wrap">
+    <from action="" class="formulario">
+      <div class="radio">
+        <h4>Tipo</h4>
+          <input class="cont" type="radio" name="Tipo" id="Proveedor"><label for="Proveedor">Proveedor</label>
+          <input class="cont" type="radio" name="Tipo" id="Cliente"><label for="Cliente">Cliente</label>
+          <input class="cont" type="radio" name="Tipo" id="Empleado"><label for="Empleado">Empleado</label>
+      </div>
+    </from>
+    </div>
+    <input class="controls" type="text" name="estatus" id="estatus" placeholder="Ingrese su Estatus" required>
+    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
+    <p><a href="/validarSesion">Ya tengo una cuenta?</a></p>
+    <input class="botons" type="submit" value="Registrar">
+  </section>
+{% endblock %}

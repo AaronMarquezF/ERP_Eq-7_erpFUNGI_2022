@@ -1,0 +1,47 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Registro de Venta</h1>
+    <form action="/Venta/agregar" method="post" enctype="multipart/form-data" style=background-color:#FBEEE6>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" name="idVenta" readonly class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sal">Saldo:</label>
+            <input type="number" name="idCuentaBancaria" required maxlength="18" placeholder="Saldo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ban">Banco:</label>
+            <input type="number" name="idUsuarios" required maxlength="60" placeholder="Nombre del Banco" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="mes">Mes de Vencimiento:</label>
+            <input type="number" name="idEmpleado" min="0" required maxlength="60" placeholder="Mes de vencimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ani">Año de Vencimiento:</label>
+            <input type="number" name="fecha" min="0" required maxlength="60" placeholder="Año de vencimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ani">Año de Vencimiento:</label>
+            <input type="float" name="total" min="0" required maxlength="60" placeholder="Año de vencimiento" class="form-control">
+        </div>
+        <div class="form-control">
+            <label for="est">Estatus:</label>
+
+                <input type="checkbox" name="estatus" value="Inactiva" checked>
+
+
+        </div>
+            <button type="submit" class="btn btn-primary">Agregar Venta</button>
+            <a href="/Venta" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

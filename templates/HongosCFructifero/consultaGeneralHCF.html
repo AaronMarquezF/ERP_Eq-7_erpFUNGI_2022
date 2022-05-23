@@ -1,0 +1,48 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Hongos Registrados ("Cuerpo Fructífero")</h1>
+
+    <a href="/HongosCFructifero/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar nuevo Hongo ("Cuerpo Fructífero")
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>ID Especie</th>
+        <th>Nombre Común</th>
+        <th>Cantidad</th>
+        <th>Peso Neto</th>
+        <th>Precio de Venta al Publico</th>
+        <th>Costo de Producción</th>
+        <th>existencias</th>
+        <th>estatus</th>
+        <th>Imagen</th>
+        {% for hcf in hongosCFructifero %}
+        <tr>
+            <td>{{hcf.idHongosCFructifero}}</td>
+            <td>{{hcf.idEspecies}}</td>
+            <td>{{hcf.nombreComun}}</td>
+            <td>{{hcf.cantidad}}</td>
+            <td>{{hcf.pesoNeto}}</td>
+            <td>{{hcf.precioVentaPublico}}</td>
+            <td>{{hcf.costoProduccion}}</td>
+            <td>{{hcf.existencias}}</td>
+            <td>{{hcf.estatus}}</td>
+            <td><img src="/HongosCFructifero/consultarImagen/{{hcf.idHongosCFructifero}}" width="100px" height="100px"></td>
+            <td>
+                <a href="/HongosCFructifero/{{hcf.idHongosCFructifero}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Registro de Vial de Esporas</h1>
+    <form action="/VialEspora/agregar" method="post" enctype="multipart/form-data" style=background-color:#FBEEE6>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" name="idVialEspora" readonly class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">Nombre del Titular:</label>
+            <input type="text" name="idEspecies" required maxlength="60" placeholder="Nombre del Propietario" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="num">Número de Tarjeta:</label>
+            <input type="number" name="precioPublico" required maxlength="19" min="0" placeholder="Número de Tarjeta" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sal">Saldo:</label>
+            <input type="float" name="costoProduccion" required maxlength="18" placeholder="Saldo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ban">Banco:</label>
+            <input type="text" name="existencias" required maxlength="60" placeholder="Nombre del Banco" class="form-control">
+        </div>
+        <div class="form-control">
+            <label for="est">Estatus:</label>
+
+                <input type="checkbox" name="estatus" value="Inactiva" checked>
+
+
+        </div>
+            <button type="submit" class="btn btn-primary">Agregar Vial de Esporas</button>
+            <a href="/VialEspora" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

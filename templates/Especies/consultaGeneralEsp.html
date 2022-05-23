@@ -1,0 +1,44 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Especies Registradas</h1>
+
+    <a href="/Especies/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar Especie
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Procedencia Geográfica</th>
+        <th>Estatus</th>
+        <th>Tipo de Cuerpo Fructífero</th>
+        <th>Relaciones Simbóticas</th>
+        <th>Comtaminantes o Amenazas</th>
+        <th>Imagen</th>
+        {% for es in especies %}
+        <tr>
+            <td>{{es.idEspecies}}</td>
+            <td>{{es.nombre}}</td>
+            <td>{{es.procedeciaGeografica}}</td>
+            <td>{{es.estatus}}</td>
+            <td>{{es.tipoCuerpoFructifero}}</td>
+            <td>{{es.relacionesSimbioticas}}</td>
+            <td>{{es.contaminantesAmenazas}}</td>
+            <td><img src="/Especies/consultarImagen/{{es.idEspecies}}" width="100px" height="80px"></td>
+            <td>
+                <a href="/Especies/{{es.idEspeies}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

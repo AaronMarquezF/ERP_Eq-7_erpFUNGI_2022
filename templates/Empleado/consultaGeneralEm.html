@@ -1,0 +1,42 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Empleados Registradas</h1>
+
+    <a href="/Empleado/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Registrar Empleado
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Contraseña</th>
+        <th>Tipo</th>
+        <th>Estatus</th>
+        <th>Turno</th>
+        <th>Foto</th>
+        {% for em in empleado %}
+        <tr>
+            <td>{{em.idEmpleado}}</td>
+            <td>{{em.nombreCompleto}}</td>
+            <td>{{em.password_hash}}</td>
+            <td>{{em.tipo}}</td>
+            <td>{{em.estatus}}</td>
+            <td>{{em.horarioTurno}}</td>
+            <td><img src="/Empleado/consultarImagen/{{em.idEmpleado}}" width="100px" height="80px"></td>
+            <td>
+                <a href="/Empleado/{{em.idEmpleado}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

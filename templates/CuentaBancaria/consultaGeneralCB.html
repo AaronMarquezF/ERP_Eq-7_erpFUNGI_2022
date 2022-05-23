@@ -1,0 +1,46 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Tarjetas Recurrentes</h1>
+
+    <a href="/CuentaBancaria/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar Tarjeta
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>Nombre del Titular</th>
+        <th>Numero de Tarjeta</th>
+        <th>Saldo</th>
+        <th>Banco</th>
+        <th>Mes y año</th>
+        <th>CVV</th>
+        <th>Tipo</th>
+        <th>Estatus</th>
+        {% for cb in cuentabancaria %}
+        <tr>
+            <td>{{cb.idCuentaBancaria}}</td>
+            <td>{{cb.nombreTitular}}</td>
+            <td>{{cb.noTarjeta}}</td>
+            <td>{{cb.saldo}}</td>
+            <td>{{cb.banco}}</td>
+            <td>{{cb.mes}}/{{cb.anio}}</td>
+            <td>{{cb.cvv}}</td>
+            <td>{{cb.tipo}}</td>
+            <td>{{cb.estatus}}</td>
+            <td>
+                <a href="/CuentaBancaria/{{cb.idCuentaBancaria}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

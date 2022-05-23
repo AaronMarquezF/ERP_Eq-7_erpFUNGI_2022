@@ -1,0 +1,55 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Registro de Hongos</h1>
+    <form action="/HongosCFructifero/agregar" method="post" enctype="multipart/form-data" style=background-color:#FBEEE6>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input type="number" name="idHongosCFructifero" readonly class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="nom">Nombre del Titular:</label>
+            <input type="text" name="idEspecies" required maxlength="60" placeholder="Nombre del Propietario" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="num">Número de Tarjeta:</label>
+            <input type="number" name="nombreComun" required maxlength="19" min="0" placeholder="Número de Tarjeta" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sal">Saldo:</label>
+            <input type="float" name="cantidad" required maxlength="18" placeholder="Saldo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ban">Banco:</label>
+            <input type="text" name="pesoNeto" required maxlength="60" placeholder="Nombre del Banco" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="mes">Mes de Vencimiento:</label>
+            <input type="text" name="precioVentaPublico" min="0" required maxlength="60" placeholder="Mes de vencimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ani">Año de Vencimiento:</label>
+            <input type="number" name="costoProduccion" min="0" required maxlength="60" placeholder="Año de vencimiento" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="ani">Año de Vencimiento:</label>
+            <input type="number" name="existencias" min="0" required maxlength="60" placeholder="Año de vencimiento" class="form-control">
+        </div>
+        <div class="form-control">
+            <label for="est">Estatus:</label>
+
+                <input type="checkbox" name="estatus" value="Inactiva" checked>
+
+
+        </div>
+            <button type="submit" class="btn btn-primary">Agregar Hongo</button>
+            <a href="/HongosCFructifero" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

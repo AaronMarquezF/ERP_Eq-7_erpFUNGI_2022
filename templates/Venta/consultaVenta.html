@@ -1,0 +1,42 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Ventas realizadas</h1>
+
+    <a href="/Venta/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Registrar Venta
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>ID Tarjeta</th>
+        <th>ID de Usuario</th>
+        <th>ID de Empleado</th>
+        <th>Fecha de transacción</th>
+        <th>Total a Pagar</th>
+        <th>Estatus</th>
+        {% for ve in Venta %}
+        <tr>
+            <td>{{ve.idVenta}}</td>
+            <td>{{ve.idCuentaBancaria}}</td>
+            <td>{{ve.idUsuarios}}</td>
+            <td>{{ve.idEmpleado}}</td>
+            <td>{{ve.fecha}}</td>
+            <td>{{ve.total}}</td>
+            <td>{{ve.estatus}}</td>
+            <td>
+                <a href="/Venta/{{ve.idVenta}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

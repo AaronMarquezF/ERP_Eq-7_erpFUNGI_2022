@@ -1,0 +1,50 @@
+{% extends 'comunes/headerBasico.html' %}
+{% block navbar %}
+    {{super()}}
+    {% include 'comunes/menuBasico.html' %}
+{% endblock %}
+{% block contenido %}
+
+<div>
+    <h1 class="bg-primary text-center">Proveedores Registrados</h1>
+
+    <a href="/Proveedores/nueva" class="btn btn-success">
+         <span class="glyphicon glyphicon-plus-sign"></span>
+        Agregar nuevo Proveedor
+    </a>
+
+    <table class="table table-bordered" style=background-color:#FBEEE6>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Correo Electrónico</th>
+        <th>País</th>
+        <th>Estado</th>
+        <th>Ciudad</th>
+        <th>Código Postal</th>
+        <th>Estatus</th>
+        <th>Logo</th>
+        {% for pr in Proveedores %}
+        <tr>
+            <td>{{pr.idProveedores}}</td>
+            <td>{{pr.nombre}}</td>
+            <td>{{pr.direccion}}</td>
+            <td>{{pr.telefono}}</td>
+            <td>{{pr.eMail}}</td>
+            <td>{{pr.pais}}</td>
+            <td>{{pr.estado}}</td>
+            <td>{{pr.ciudad}}</td>
+            <td>{{pr.codigoPostal}}</td>
+            <td>{{pr.estatus}}</td>
+            <td><img src="/Proveedores/consultarImagen/{{pr.idProveedores}}" width="100px" height="100px"></td>
+            <td>
+                <a href="/Proveedores/{{pr.idProveedores}}">
+                    <span class="glyphicon glyphicon-eye-open"></span>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
